@@ -1,12 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /wp-admin/
+
 Sitemap: https://www.braiketowing.com/sitemap.xml
-
-# Crawl-delay for Bing/DuckDuckGo
-User-agent: bingbot
-Crawl-delay: 5
-
-User-agent: duckduckbot
-Crawl-delay: 5
