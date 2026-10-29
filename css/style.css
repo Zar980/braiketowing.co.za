@@ -179,7 +179,7 @@ header {
 
 /* --- HERO SECTION --- */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../header.jpeg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/header2.jpg') no-repeat center center/cover;
     padding: clamp(80px, 15vw, 150px) 0;
     text-align: center;
     position: relative;
