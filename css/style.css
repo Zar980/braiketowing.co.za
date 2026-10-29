@@ -25,7 +25,7 @@ body {
     color: var(--color-text);
     font-family: var(--font-heading);
     line-height: 1.6;
-    overflow-x: hidden; /* Prevents scrolling sideways */
+    overflow-x: hidden;
 }
 
 .container {
@@ -84,14 +84,28 @@ header {
     flex-wrap: wrap;
 }
 
-.logo h1 {
+/* LOGO + IMAGE ALIGNMENT */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+.logo-img {
+    height: 65px; 
+    width: auto;
+    object-fit: contain;
+    border-radius: 40%;
+}
+
+.logo-text h1 {
     font-size: clamp(1.4rem, 3vw, 1.8rem);
     color: #fff;
     line-height: 1.1;
     font-weight: 900;
 }
 
-.logo h1 span {
+.logo-text h1 span {
     color: var(--color-primary);
     font-size: clamp(0.75rem, 1.5vw, 1rem);
     letter-spacing: 1px;
@@ -165,8 +179,7 @@ header {
 
 /* --- HERO SECTION --- */
 .hero {
-    /* Darkened overlay so your white text is readable regardless of the background image */
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/header.jpeg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../header.jpeg') no-repeat center center/cover;
     padding: clamp(80px, 15vw, 150px) 0;
     text-align: center;
     position: relative;
@@ -225,7 +238,6 @@ header {
 
 .features-grid {
     display: grid;
-    /* This ensures it never shrinks below 250px, making it perfectly responsive */
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
     gap: 20px;
 }
@@ -330,7 +342,7 @@ header {
 
 .carousel-slide img {
     width: 100%;
-    aspect-ratio: 16 / 9; /* Keeps perfect shape on all screens */
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     display: block;
 }
@@ -366,8 +378,69 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Video fills the entire box perfectly */
+    object-fit: cover;
     border: none;
+}
+
+/* --- FAQ SECTION --- */
+.faq-section {
+    padding: clamp(50px, 8vw, 80px) 0;
+    background-color: #1a1a1a;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--color-light-dark);
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.faq-item:hover {
+    border-color: var(--color-primary);
+}
+
+.faq-item summary {
+    padding: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none; /* Hides default arrow */
+    position: relative;
+    color: #fff;
+}
+
+/* Custom Plus/Minus icon for FAQ */
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    transition: transform 0.3s;
+}
+
+.faq-item[open] summary::after {
+    content: '−'; /* Changes to minus when open */
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none; /* Hides default arrow in Safari/Chrome */
+}
+
+.faq-answer {
+    padding: 0 20px 20px 20px;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    border-top: 1px solid #333;
+    padding-top: 15px;
 }
 
 /* --- CTA SECTION --- */
@@ -486,7 +559,6 @@ footer {
         gap: 5px;
     }
 
-    /* Setup Mobile Menu */
     .menu-toggle {
         display: block; 
     }
@@ -509,10 +581,9 @@ footer {
     }
 
     .header-btn {
-        display: none; /* Hide desktop button on mobile to save space */
+        display: none;
     }
 
-    /* Make Buttons Stack Full-Width */
     .hero-actions, .cta-actions {
         flex-direction: column;
         width: 100%;
@@ -525,11 +596,17 @@ footer {
         display: block;
     }
     
-    /* Adjust WhatsApp icon size slightly for phones */
     .whatsapp-float {
         width: 55px;
         height: 55px;
         bottom: 15px;
         right: 15px;
+    }
+
+    .logo-img {
+        height: 50px;
+    }
+    .logo {
+        gap: 10px;
     }
 }
