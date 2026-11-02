@@ -95,17 +95,16 @@ header {
     height: 65px; 
     width: auto;
     object-fit: contain;
-    border-radius: 40%;
 }
 
-.logo-text h1 {
+.logo-text .main-logo-text {
     font-size: clamp(1.4rem, 3vw, 1.8rem);
     color: #fff;
     line-height: 1.1;
     font-weight: 900;
 }
 
-.logo-text h1 span {
+.logo-text .main-logo-text span {
     color: var(--color-primary);
     font-size: clamp(0.75rem, 1.5vw, 1rem);
     letter-spacing: 1px;
@@ -179,13 +178,13 @@ header {
 
 /* --- HERO SECTION --- */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/header2.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../header.jpeg') no-repeat center center/cover;
     padding: clamp(80px, 15vw, 150px) 0;
     text-align: center;
     position: relative;
 }
 
-.hero h2 {
+.hero h1 {
     font-size: clamp(2rem, 6vw, 3.5rem);
     font-weight: 900;
     margin-bottom: 20px;
@@ -194,16 +193,6 @@ header {
     margin-right: auto;
     line-height: 1.2;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-}
-
-.hero p {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    color: #fff;
-    margin-bottom: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }
 
 .hero-actions {
@@ -411,12 +400,11 @@ header {
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    list-style: none; /* Hides default arrow */
+    list-style: none; 
     position: relative;
     color: #fff;
 }
 
-/* Custom Plus/Minus icon for FAQ */
 .faq-item summary::after {
     content: '+';
     position: absolute;
@@ -427,11 +415,11 @@ header {
 }
 
 .faq-item[open] summary::after {
-    content: '−'; /* Changes to minus when open */
+    content: '−'; 
 }
 
 .faq-item summary::-webkit-details-marker {
-    display: none; /* Hides default arrow in Safari/Chrome */
+    display: none; 
 }
 
 .faq-answer {
@@ -443,53 +431,72 @@ header {
     padding-top: 15px;
 }
 
-/* --- CTA SECTION --- */
+/* --- CONTACT FORM SECTION (UPDATED CTA) --- */
 .cta-section {
     background-color: var(--color-primary);
     padding: clamp(50px, 8vw, 80px) 0;
-    text-align: center;
     color: var(--color-dark);
 }
 
-.cta-section h2 {
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+}
+
+.contact-info h2 {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-weight: 900;
 }
 
-.cta-section p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    margin-bottom: 30px;
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
     font-family: var(--font-body);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.cta-actions {
+.contact-form-box {
+    background-color: var(--color-light-dark);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.contact-form-box h3 {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+#quoteForm {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     gap: 15px;
-    flex-wrap: wrap;
 }
 
-.cta-actions .btn-yellow {
-    background-color: var(--color-dark);
-    color: var(--color-primary);
+#quoteForm input, 
+#quoteForm select, 
+#quoteForm textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #1a1a1a;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    transition: border-color 0.3s;
 }
 
-.cta-actions .btn-yellow:hover {
-    background-color: #000;
-}
-
-.cta-actions .btn-outline {
-    border-color: var(--color-dark);
-    color: var(--color-dark);
-}
-
-.cta-actions .btn-outline:hover {
-    background-color: var(--color-dark);
-    color: var(--color-primary);
+#quoteForm input:focus, 
+#quoteForm select:focus, 
+#quoteForm textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
 }
 
 /* --- FOOTER --- */
@@ -584,7 +591,7 @@ footer {
         display: none;
     }
 
-    .hero-actions, .cta-actions {
+    .hero-actions {
         flex-direction: column;
         width: 100%;
         max-width: 350px;
@@ -608,5 +615,15 @@ footer {
     }
     .logo {
         gap: 10px;
+    }
+
+    /* Stack the form and info on mobile */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .cta-actions {
+        justify-content: center !important;
     }
 }
